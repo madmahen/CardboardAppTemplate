@@ -18,7 +18,6 @@ Sample app is in `app/src/main/assets/main.js`.
 
   initScene(scene);
 
-  var walking = false;
   app.on('click', function() {
     // Do something on cardboard magnet sensor triggered.
   });
