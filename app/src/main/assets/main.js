@@ -34,27 +34,28 @@
   var cube = new THREE.Mesh(new THREE.BoxGeometry(5, 5, 5), new THREE.MeshBasicMaterial({
     color: 0xff9900
   }));
-
   scene.add(cube);
 
   // Move camera to see a cube
   camera.position.y = 10;
   camera.position.z = -10;
 
+  var walking = false;
+  app.on('click', function() {
+    walking = !walking;
+  });
+
   // Add update callback receiver
   // e.detail is CardboardApp.State object.
   // e.detail.dt is a result of THREE.Clock.getDelta() for each frames.
   // e.detail.touching is true while user is touching to screen (with VR kit's button).
   app.on('update', function(e) {
-    var state = e.detail;
-
-    // Move forward while touching
-    if (state.touching) {
+    if (walking) {
       var vec = new THREE.Vector3(0, 0, -1);
       vec.applyQuaternion(camera.quaternion);
       vec.y = 0; // now vec is forward vector.
 
-      vec.multiplyScalar(10 * state.dt);
+      vec.multiplyScalar(10 * e.detail.dt);
       camera.position.add(vec);
     }
   });
@@ -62,11 +63,5 @@
   // And be able to add more callback(s)
   app.on('update', function(e) {
     cube.rotation.y += 0.5 * e.detail.dt;
-  });
-
-  app.on('click', function() {
-    app.requestFullscreen();
-  }).on('cardboardTrigger', function(e) {
-    console.log(e);
   });
 })(window);
