@@ -1,4 +1,4 @@
-package cardboardtemplate.eje_c.com.cardboardtemplate;
+package com.eje_c.cardboardtemplate;
 
 import android.os.Bundle;
 import android.webkit.ValueCallback;
@@ -27,7 +27,7 @@ public class MainActivity extends CardboardActivity {
 
     @Override
     public void onCardboardTrigger() {
-        webView.evaluateJavascript("app.emit('cardboardTrigger');", new ValueCallback<String>() {
+        webView.evaluateJavascript("app.renderer.domElement.click();", new ValueCallback<String>() {
             @Override
             public void onReceiveValue(String value) {
             }
