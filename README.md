@@ -1,7 +1,7 @@
 CardboardAppTemplate
 ====================
 
-Template project for create native google cardboard app with three.js compatible with Google Cardboard magnet sensor.
+Template project for create native google cardboard app with three.js compatible with Google Cardboard magnet sensor. This project uses [CardboardApp.js](https://github.com/ejeinc/CardboardApp.js) library
 
 ## Template
 
